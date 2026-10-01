@@ -8,46 +8,46 @@ stale_after: 2027-01-01T00:00:00Z
 generated: { by: codex/gpt-6, at: 2026-10-01T20:00:00Z }
 sources:
   - id: ref-01
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/01-azure-ai-foundry-your-ai-app-and-agent-factory-microsof.md
     title: "Azure AI Foundry: Your AI App and agent factory | Microsoft Azure Blog"
   - id: ref-02
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/02-microsoft-foundry-documentation.md
     title: "Microsoft Foundry documentation"
   - id: ref-03
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/03-what-is-microsoft-foundry-microsoft-foundry-microsoft-l.md
     title: "What is Microsoft Foundry? - Microsoft Foundry - Microsoft Learn"
   - id: ref-04
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/04-deploying-ai-foundry-agents-and-azure-container-apps-to.md
     title: "Deploying AI Foundry Agents and Azure Container Apps to support"
   - id: ref-05
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/05-ai-foundry-formerly-ai-studio-networking-and-security-d.md
     title: "AI Foundry (Formerly AI Studio) Networking and Security: Deep Dive"
   - id: ref-06
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/06-private-networking-and-inference-in-microsoft-foundry-a.md
     title: "Private Networking and Inference in Microsoft Foundry: Architecture"
   - id: ref-07
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/07-foundry-models-microsoft-azure.md
     title: "Foundry Models | Microsoft Azure"
   - id: ref-08
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/08-ai-evals-platforms-a-comparative-guide-for-production-a.md
     title: "AI evals platforms: A comparative guide for production AI systems"
   - id: ref-09
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/09-azure-ai-foundry-pricing-and-cost-management-tips-team-.md
     title: "Azure AI Foundry Pricing and Cost Management Tips | Team 400 Blog"
   - id: ref-10
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/10-azure-ai-foundry-pricing-2026-ultimate-cost-guide-wr-vi.md
     title: "Azure AI Foundry Pricing 2026: Ultimate Cost Guide - WR Vishnu"
   - id: ref-11
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/11-azure-ai-foundry-pricing-guide-microsoft.md
     title: "Azure AI Foundry pricing guide - Microsoft"
   - id: ref-12
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/12-azure-ai-foundry-pricing-guide-microsoft.md
     title: "Azure AI Foundry pricing guide - Microsoft"
   - id: ref-13
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/13-tag-archives-api-management-for-ai-steef-jan-wiggers.md
     title: "Tag Archives: api management for ai - Steef-Jan Wiggers"
   - id: ref-14
-    resource: ../undefined
+    resource: ../sources/azure-ai-foundry/references/14-unexpected-50k-azure-bill-for-openai-service-used-for-o.md
     title: "Unexpected $50K Azure Bill for OpenAI Service Used for Only an Hour"
 ---
 
