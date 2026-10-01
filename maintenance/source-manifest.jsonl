@@ -1,2 +1,4 @@
 {"path": "sources/README.md", "sha256": "48fde3a5dbf33bb23d590814041e4ed89bbd9a932cc4475055120614a7981e17", "covered_by": [], "kind": "guidance"}
+{"path": "sources/azure-ai-foundry/azure-ai-foundry-learning-roadmap.docx", "sha256": "cc01d0c190532a1696769b88668804fe24d826397eb24fd3596b9a5c4d21daac", "covered_by": [], "kind": "source"}
+{"path": "sources/azure-ai-foundry/roadmap-references.md", "sha256": "cb3fc5e5dff6ca86f5fcd0eaaade5a249a37bc8958ba3daf4c471a0451d0a7ca", "covered_by": [], "kind": "source"}
 {"path": "sources/inbox/README.md", "sha256": "e236df8339fae8589cc5c4635bc5d822d4c4572a304144dcecbb32c11c4dd750", "covered_by": [], "kind": "guidance"}
