@@ -10,7 +10,7 @@ okf_version: "0.2"
 
 # Topics
 
-No source-derived concepts have been added yet. Add and ingest sources to grow this Map of Content.
+* [Azure AI Foundry learning roadmap](learning-roadmap.md) - Five-phase study sequence and retail-agent capstone; technical claims remain unverified.
 
 # Templates
 
