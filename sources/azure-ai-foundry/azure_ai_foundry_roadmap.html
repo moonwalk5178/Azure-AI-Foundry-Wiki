@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure AI Foundry Mastery Roadmap</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Minimal custom styling for chart boundaries and custom scrollbars */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 380px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+        /* Custom scrollbar for clean internal views */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Chosen Palette: Warm Azure Neutral (Slate 50 background, Navy/Slate dark headers, Azure & Teal accents, Pure White cards, Soft Border tones) -->
+
+    <!-- Application Structure Plan:
+        1. Top Header & Interactive Learning Progress Bar: Displays current roadmap completion score and top navigation tabs.
+        2. Hero Overview & Metric Cards: Key highlights of the roadmap (20 Weeks, 5 Core Phases, 1 Capstone, 4 Certifications, 11,000+ Models).
+        3. Interactive Phase & Timeline Explorer (Main Section): Tabbed/Accordion view for Weeks 1-20, equipped with topic checkboxes, detailed concept cards, architectural explanations, and SDK code examples.
+        4. Interactive Decision & Simulation Lab:
+            - Token Cost Calculator (PAYG vs PTU Breakeven Chart.js)
+            - RAG vs Fine-Tuning Architectural Selector (Dynamic scenario recommendation matrix)
+            - LLM Evaluation Metrics Radar Chart (Chart.js)
+        5. Capstone Project Blueprint (IERA - Intelligent Enterprise Retail Agent): Step-by-step interactive system flow diagram built with CSS Grid/Flex, showing Hub/Project setup, Vector Search, SQL MCP Server, Multi-Agent Router, and Red Teaming.
+        6. Certification Pathway & Self-Assessment Quiz: Readiness test and step-by-step cert path (AI-900 -> AI-3016 -> AI-3026 -> AI-102).
+    -->
+
+    <!-- Visualization & Content Choices:
+        - Chart 1: Token Billing Breakeven (PAYG vs PTU vs Managed Compute) -> Chart.js Line Chart with dynamic input sliders. Allows users to test monthly token volumes.
+        - Chart 2: LLM Evaluation Metrics (Groundedness, Relevance, Coherence, Tool Call Accuracy) -> Chart.js Radar Chart showing benchmark target scores.
+        - Decision Matrix: Interactive Scenario Cards -> JavaScript dynamic filter logic recommending RAG, Fine-Tuning, or Hybrid based on security, latency, and fresh data needs.
+        - Visual Workflows: HTML/CSS styled node cards with Unicode connectors to demonstrate Agentic MCP flows and Hub/Project resource hierarchies without using SVG or Mermaid.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-900 text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">⚡</span>
+                    <div>
+                        <h1 class="font-bold text-lg tracking-tight text-white">Azure AI Foundry Roadmap</h1>
+                        <p class="text-xs text-slate-400 hidden sm:block">Zero to Enterprise-Grade AI Mastery</p>
+                    </div>
+                </div>
+                <!-- Navigation Tabs -->
+                <nav class="flex space-x-1 sm:space-x-4 text-xs sm:text-sm font-medium">
+                    <button onclick="switchTab('roadmap')" id="tab-btn-roadmap" class="px-3 py-2 rounded-lg bg-blue-600 text-white transition hover:bg-blue-500">Roadmap</button>
+                    <button onclick="switchTab('simulators')" id="tab-btn-simulators" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Simulators & Cost</button>
+                    <button onclick="switchTab('capstone')" id="tab-btn-capstone" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Capstone Blueprint</button>
+                    <button onclick="switchTab('certs')" id="tab-btn-certs" class="px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition">Certifications</button>
+                </nav>
+            </div>
+        </div>
+        <!-- Progress Bar Indicator -->
+        <div class="w-full bg-slate-800 h-1.5">
+            <div id="overall-progress-bar" class="bg-teal-400 h-1.5 w-0 transition-all duration-500"></div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+
+        <!-- SECTION 1: HERO OVERVIEW & METRICS -->
+        <section class="mb-8">
+            <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-xl border border-slate-800 relative overflow-hidden">
+                <div class="relative z-10 max-w-3xl">
+                    <div class="inline-flex items-center space-x-2 bg-blue-500/20 text-blue-300 px-3 py-1 rounded-full text-xs font-semibold mb-3 border border-blue-500/30">
+                        <span>🚀 Complete Learning Path</span>
+                        <span>•</span>
+                        <span>20 Weeks Structured Roadmap</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-3 text-white">Master Azure AI Foundry from Scratch</h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        Azure AI Foundry (formerly Azure AI Studio) is Microsoft's unified control plane for building, evaluating, orchestrating, and governing enterprise AI solutions and autonomous agents. This interactive roadmap guides you from core architectural principles to advanced Model Context Protocol (MCP) integrations and production deployment.
+                    </p>
+                    <div class="flex flex-wrap gap-4 text-xs sm:text-sm">
+                        <div class="bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700/60 flex items-center space-x-3">
+                            <span class="text-xl">📊</span>
+                            <div>
+                                <p class="text-slate-400 text-xs">Total Progress</p>
+                                <p id="progress-text-count" class="font-bold text-teal-300">0 / 20 Topics Completed</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700/60 flex items-center space-x-3">
+                            <span class="text-xl">🛠️</span>
+                            <div>
+                                <p class="text-slate-400 text-xs">Capstone Project</p>
+                                <p class="font-bold text-blue-300">IERA Retail Agent</p>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800/80 px-4 py-2.5 rounded-xl border border-slate-700/60 flex items-center space-x-3">
+                            <span class="text-xl">📜</span>
+                            <div>
+                                <p class="text-slate-400 text-xs">Target Certification</p>
+                                <p class="font-bold text-indigo-300">AI-102 Associate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 1: ROADMAP EXPLORER -->
+        <div id="view-roadmap" class="space-y-8">
+            <!-- Section Intro -->
+            <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center space-x-2">
+                    <span>📚</span>
+                    <span>Phased Learning Timeline & Topics</span>
+                </h3>
+                <p class="text-slate-600 text-sm">
+                    This section presents the 5 core learning phases structured across 20 weeks. Expand each phase to explore technical topics, study instructions, key trade-offs, and practical Python SDK code patterns. Use the checkboxes to track your learning progress over time.
+                </p>
+            </div>
+
+            <!-- Phase Selector Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
+                <button onclick="selectPhase(1)" id="phase-btn-1" class="phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-blue-600 ring-2 ring-blue-500/20 shadow-sm">
+                    <p class="text-xs text-blue-600 font-bold uppercase tracking-wider">Weeks 1-4</p>
+                    <p class="font-bold text-sm text-slate-900 mt-1">Phase 1: Architecture & Costs</p>
+                </button>
+                <button onclick="selectPhase(2)" id="phase-btn-2" class="phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-slate-200 hover:border-slate-300 shadow-sm">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Weeks 5-8</p>
+                    <p class="font-bold text-sm text-slate-900 mt-1">Phase 2: RAG & Orchestration</p>
+                </button>
+                <button onclick="selectPhase(3)" id="phase-btn-3" class="phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-slate-200 hover:border-slate-300 shadow-sm">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Weeks 9-12</p>
+                    <p class="font-bold text-sm text-slate-900 mt-1">Phase 3: Agents & MCP Protocol</p>
+                </button>
+                <button onclick="selectPhase(4)" id="phase-btn-4" class="phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-slate-200 hover:border-slate-300 shadow-sm">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Weeks 13-16</p>
+                    <p class="font-bold text-sm text-slate-900 mt-1">Phase 4: Evaluation & Red Teaming</p>
+                </button>
+                <button onclick="selectPhase(5)" id="phase-btn-5" class="phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-slate-200 hover:border-slate-300 shadow-sm">
+                    <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Weeks 17-20</p>
+                    <p class="font-bold text-sm text-slate-900 mt-1">Phase 5: Production Deployment</p>
+                </button>
+            </div>
+
+            <!-- Dynamic Phase Content Area -->
+            <div id="phase-content-container" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <!-- Content dynamically populated via JS -->
+            </div>
+        </div>
+
+        <!-- VIEW 2: SIMULATORS & COST LAB -->
+        <div id="view-simulators" class="hidden space-y-8">
+            <!-- Section Intro -->
+            <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center space-x-2">
+                    <span>🧮</span>
+                    <span>Interactive Architectural & Cost Simulators</span>
+                </h3>
+                <p class="text-slate-600 text-sm">
+                    Making the right architectural choices in Azure AI Foundry requires balancing model cost, latency, factual grounding, and compliance. Use these interactive tools to calculate breakeven thresholds between Pay-As-You-Go (PAYG) and Provisioned Throughput Units (PTU), choose between RAG and Fine-Tuning, and visualize LLM evaluation dimensions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Tool 1: Token Cost Simulator -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                                <span>💵</span>
+                                <span>LLM Economic Calculator (PAYG vs PTU)</span>
+                            </h4>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Cost Optimization</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4">
+                            Adjust monthly token consumption to model expenses. Pay-As-You-Go scales linearly with usage, while Provisioned Throughput Units (PTU) offer dedicated capacity at a fixed baseline cost. Notice how PTU becomes economical past ~150M-200M tokens/month.
+                        </p>
+
+                        <!-- Sliders -->
+                        <div class="space-y-4 mb-6">
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                    <span>Estimated Monthly Tokens (Millions)</span>
+                                    <span id="slider-tokens-val" class="text-blue-600 font-bold">100M Tokens</span>
+                                </div>
+                                <input type="range" id="slider-tokens" min="10" max="400" step="10" value="100" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="updateCostChart()">
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                                    <span>PAYG Blended Rate ($ / Million Tokens)</span>
+                                    <span id="slider-rate-val" class="text-blue-600 font-bold">$7.50 / M</span>
+                                </div>
+                                <input type="range" id="slider-rate" min="2.0" max="15.0" step="0.5" value="7.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" oninput="updateCostChart()">
+                            </div>
+                        </div>
+
+                        <!-- Breakeven Insight Box -->
+                        <div id="cost-insight-box" class="bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs text-slate-700 mb-4">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Chart Container -->
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Tool 2: RAG vs. Fine-Tuning Decision Matrix -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                                <span>🎯</span>
+                                <span>RAG vs. Fine-Tuning Strategy Selector</span>
+                            </h4>
+                            <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded font-medium">Architecture Choice</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-4">
+                            Select your primary project requirement below to see the recommended implementation path in Azure AI Foundry along with trade-offs.
+                        </p>
+
+                        <div class="space-y-2 mb-6">
+                            <label class="block text-xs font-semibold text-slate-700">Primary Project Goal:</label>
+                            <select id="matrix-scenario-select" onchange="updateDecisionMatrix()" class="w-full text-xs bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-slate-900 font-medium focus:ring-2 focus:ring-blue-500">
+                                <option value="realtime">1. Interrogate dynamic enterprise documents & real-time knowledge base</option>
+                                <option value="style">2. Enforce strict JSON output schemas and domain-specific tone/vernacular</option>
+                                <option value="copilot">3. Mission-critical internal copilot needing both live factual lookup and strict style</option>
+                                <option value="slm">4. Low-latency edge deployment with minimal token cost for simple classifications</option>
+                            </select>
+                        </div>
+
+                        <div id="decision-result-card" class="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100 space-y-3">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="mt-4 pt-4 border-t border-slate-100 text-xs text-slate-500">
+                        💡 <strong>Rule of Thumb:</strong> Use RAG for expanding model facts; use Fine-Tuning for altering model behavior/format.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tool 3: Azure AI Evaluation Dimensions -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="md:flex md:items-center md:justify-between mb-6">
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                            <span>🛡️</span>
+                            <span>Azure AI Evaluation & Quality Framework</span>
+                        </h4>
+                        <p class="text-xs text-slate-600 mt-1">
+                            Quantifying LLM outputs using the <code class="bg-slate-100 px-1 rounded">azure-ai-evaluation</code> SDK metrics (Scale 1 to 5).
+                        </p>
+                    </div>
+                    <div class="mt-3 md:mt-0 flex space-x-2 text-xs">
+                        <button onclick="setEvalPreset('rag')" class="px-3 py-1.5 bg-blue-100 text-blue-800 rounded-lg font-medium hover:bg-blue-200">RAG Target Profile</button>
+                        <button onclick="setEvalPreset('agent')" class="px-3 py-1.5 bg-teal-100 text-teal-800 rounded-lg font-medium hover:bg-teal-200">Autonomous Agent Profile</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                    <div class="chart-container">
+                        <canvas id="evalRadarChart"></canvas>
+                    </div>
+                    <div class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <p class="font-bold text-slate-900">Groundedness (1-5)</p>
+                            <p class="text-slate-600 mt-0.5">Measures if response claims are strictly derived from retrieved context sources. Essential for eliminating hallucinations.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <p class="font-bold text-slate-900">Relevance (1-5)</p>
+                            <p class="text-slate-600 mt-0.5">Assesses whether response directly and efficiently answers the prompt without adding tangential fluff.</p>
+                        </div>
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+                            <p class="font-bold text-slate-900">Tool Call Accuracy (1-5)</p>
+                            <p class="text-slate-600 mt-0.5">Evaluates how accurately an agent invokes external MCP or function parameters based on user instructions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 3: CAPSTONE BLUEPRINT (IERA) -->
+        <div id="view-capstone" class="hidden space-y-8">
+            <!-- Section Intro -->
+            <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center space-x-2">
+                    <span>🏗️</span>
+                    <span>Capstone Blueprint: Intelligent Enterprise Retail Agent (IERA)</span>
+                </h3>
+                <p class="text-slate-600 text-sm">
+                    The ultimate test of your Azure AI Foundry skills is constructing the IERA capstone system. IERA is a multi-agent retail manager assistant that answers policy questions via RAG, queries live inventory databases via the Model Context Protocol (MCP), and performs self-evaluation for safety and accuracy.
+                </p>
+            </div>
+
+            <!-- Interactive Architecture Stepper -->
+            <div class="bg-slate-900 rounded-2xl p-6 text-white shadow-lg border border-slate-800">
+                <div class="flex flex-wrap gap-2 mb-6 border-b border-slate-800 pb-4">
+                    <button onclick="setCapstoneStep(1)" id="cstep-btn-1" class="capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white">Step 1: Infra & Hub</button>
+                    <button onclick="setCapstoneStep(2)" id="cstep-btn-2" class="capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 hover:text-white">Step 2: RAG Grounding</button>
+                    <button onclick="setCapstoneStep(3)" id="cstep-btn-3" class="capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 hover:text-white">Step 3: SQL MCP Server</button>
+                    <button onclick="setCapstoneStep(4)" id="cstep-btn-4" class="capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 hover:text-white">Step 4: Multi-Agent Router</button>
+                    <button onclick="setCapstoneStep(5)" id="cstep-btn-5" class="capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 hover:text-white">Step 5: Red Teaming</button>
+                    <button onclick="setCapstoneStep(6)" id="cstep-btn-6" class="capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 hover:text-white">Step 6: APIM & CI/CD</button>
+                </div>
+
+                <div id="capstone-step-details" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Complete Visual Architecture Workflow (No SVG/Mermaid) -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <h4 class="font-bold text-slate-900 mb-4 text-base flex items-center space-x-2">
+                    <span>🔄</span>
+                    <span>IERA System Interaction Topology</span>
+                </h4>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-2xl">👤</span>
+                            <p class="font-bold text-slate-900 mt-2">Retail Manager</p>
+                            <p class="text-slate-500 mt-1">Prompt: "What is the return policy & SKU-8472 stock?"</p>
+                        </div>
+                        <div class="mt-3 text-blue-600 font-bold">⬇️ REST / HTTPS</div>
+                    </div>
+
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-2xl">🛡️</span>
+                            <p class="font-bold text-indigo-950 mt-2">Azure APIM Gateway</p>
+                            <p class="text-indigo-700 mt-1">Semantic Caching, Token Rate Limits & Safety Shields</p>
+                        </div>
+                        <div class="mt-3 text-indigo-600 font-bold">⬇️ Authenticated</div>
+                    </div>
+
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-2xl">🤖</span>
+                            <p class="font-bold text-blue-950 mt-2">GPT-4o-mini Router</p>
+                            <p class="text-blue-700 mt-1">Classifies intent & splits into policy vs SQL tasks</p>
+                        </div>
+                        <div class="mt-3 text-blue-600 font-bold">🔀 Orchestrates</div>
+                    </div>
+
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-2xl">🔍</span>
+                            <p class="font-bold text-emerald-950 mt-2">RAG Agent</p>
+                            <p class="text-emerald-700 mt-1">Hybrid Vector search over HR policies in Azure AI Search</p>
+                        </div>
+                        <div class="mt-3 text-emerald-600 font-bold">🤝 Merges Context</div>
+                    </div>
+
+                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-2xl">⚡</span>
+                            <p class="font-bold text-teal-950 mt-2">MCP SQL Agent</p>
+                            <p class="text-teal-700 mt-1">Executes dynamic SQL query via MCP Tool on Azure SQL</p>
+                        </div>
+                        <div class="mt-3 text-teal-600 font-bold">✅ Synthesizes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 4: CERTIFICATIONS & READINESS QUIZ -->
+        <div id="view-certs" class="hidden space-y-8">
+            <!-- Section Intro -->
+            <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center space-x-2">
+                    <span>📜</span>
+                    <span>Certification Pathways & Mastery Quiz</span>
+                </h3>
+                <p class="text-slate-600 text-sm">
+                    Validate your learning roadmap milestones through official Microsoft credentials. Review the certification progression below and take the knowledge readiness quiz to evaluate your understanding of Azure AI Foundry.
+                </p>
+            </div>
+
+            <!-- Cert Steps -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+                    <span class="absolute -right-2 -bottom-2 text-6xl opacity-10">1</span>
+                    <span class="text-xs bg-slate-100 text-slate-700 font-bold px-2.5 py-1 rounded-full">Prerequisite</span>
+                    <h4 class="font-bold text-slate-900 mt-3 text-sm">AI-900: Azure AI Fundamentals</h4>
+                    <p class="text-xs text-slate-600 mt-2">Covers baseline machine learning principles, cognitive services, and general cloud hosting concepts.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+                    <span class="absolute -right-2 -bottom-2 text-6xl opacity-10 text-blue-500">2</span>
+                    <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2.5 py-1 rounded-full">Applied Skill</span>
+                    <h4 class="font-bold text-slate-900 mt-3 text-sm">AI-3016: Generative AI in Foundry</h4>
+                    <p class="text-xs text-slate-600 mt-2">Validates practical experience with model deployment, Prompt Flow DAGs, and basic RAG setups.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+                    <span class="absolute -right-2 -bottom-2 text-6xl opacity-10 text-teal-500">3</span>
+                    <span class="text-xs bg-teal-100 text-teal-800 font-bold px-2.5 py-1 rounded-full">Applied Skill</span>
+                    <h4 class="font-bold text-slate-900 mt-3 text-sm">AI-3026: Develop AI Agents</h4>
+                    <p class="text-xs text-slate-600 mt-2">Focuses on Foundry Agent Service, Microsoft Agent Framework, and external MCP tool integration.</p>
+                </div>
+
+                <div class="bg-white p-5 rounded-2xl border border-indigo-200 shadow-sm relative overflow-hidden bg-gradient-to-b from-white to-indigo-50/30">
+                    <span class="absolute -right-2 -bottom-2 text-6xl opacity-10 text-indigo-500">4</span>
+                    <span class="text-xs bg-indigo-600 text-white font-bold px-2.5 py-1 rounded-full">Associate Goal</span>
+                    <h4 class="font-bold text-slate-900 mt-3 text-sm">AI-102: Azure AI Engineer Associate</h4>
+                    <p class="text-xs text-slate-600 mt-2">The gold-standard certification examining full enterprise AI deployment, security, and governance.</p>
+                </div>
+            </div>
+
+            <!-- Interactive Knowledge Quiz -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="font-bold text-slate-900 text-base flex items-center space-x-2">
+                        <span>🧠</span>
+                        <span>Azure AI Foundry Readiness Self-Assessment</span>
+                    </h4>
+                    <span id="quiz-score-badge" class="text-xs bg-slate-100 text-slate-700 font-bold px-3 py-1 rounded-full">Score: 0/3</span>
+                </div>
+
+                <div class="space-y-6 text-xs sm:text-sm">
+                    <!-- Q1 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <p class="font-bold text-slate-900">1. What is the fundamental organizational difference between a Hub and a Project in Azure AI Foundry?</p>
+                        <div class="space-y-1.5 pl-2">
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q1" value="a" class="mt-1" onchange="checkQuiz()">
+                                <span>A. Hubs host models; Projects store user telemetry logs.</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q1" value="b" class="mt-1" onchange="checkQuiz()">
+                                <span class="font-medium text-slate-800">B. A Hub is the IT governance boundary with shared VNets/security; Projects are nested workspaces for developer teams.</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q1" value="c" class="mt-1" onchange="checkQuiz()">
+                                <span>C. Hubs are for Pay-As-You-Go models; Projects are strictly for PTU deployments.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <p class="font-bold text-slate-900">2. How does the Model Context Protocol (MCP) streamline agent system development?</p>
+                        <div class="space-y-1.5 pl-2">
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q2" value="a" class="mt-1" onchange="checkQuiz()">
+                                <span>A. It automatically reduces the latency of OpenAI models by 50%.</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q2" value="b" class="mt-1" onchange="checkQuiz()">
+                                <span class="font-medium text-slate-800">B. It provides an open standard client-server protocol that eliminates writing custom middleware for each internal enterprise database/API.</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q2" value="c" class="mt-1" onchange="checkQuiz()">
+                                <span>C. It replaces Azure AI Search by storing all embeddings directly in system memory.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                        <p class="font-bold text-slate-900">3. When should you choose Fine-Tuning over Retrieval-Augmented Generation (RAG)?</p>
+                        <div class="space-y-1.5 pl-2">
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q3" value="a" class="mt-1" onchange="checkQuiz()">
+                                <span class="font-medium text-slate-800">A. When you need to enforce a specific output style, domain tone, or JSON schema rather than inject rapidly changing dynamic facts.</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q3" value="b" class="mt-1" onchange="checkQuiz()">
+                                <span>B. When you want to continuously feed live daily corporate news to the model.</span>
+                            </label>
+                            <label class="flex items-start space-x-2 cursor-pointer">
+                                <input type="radio" name="q3" value="c" class="mt-1" onchange="checkQuiz()">
+                                <span>C. Fine-Tuning is always superior to RAG in both cost and factual accuracy.</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="quiz-feedback" class="mt-4 p-3 rounded-lg text-xs font-semibold hidden">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-6 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-2">
+            <p>Azure AI Foundry Learning Roadmap • Designed for AI Engineers & Cloud Architects</p>
+            <p class="text-slate-500">Includes coverage of Prompt Flow, Model Context Protocol (MCP), Grounding, PyRIT Red Teaming, and APIM GenAI Gateway.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Data Structure holding the 5 Learning Phases
+        const phaseData = {
+            1: {
+                weeks: "Weeks 1-4",
+                title: "Platform Architecture, Governance, and Economic Modeling",
+                summary: "Master the foundational enterprise controls of Azure AI Foundry, including Hub/Project hierarchy, Virtual Networks, model selection, and token cost economics.",
+                topics: [
+                    { id: "p1_1", title: "Hub vs. Project Control Plane Hierarchy", desc: "Hubs establish IT boundaries, VNets, and Private Endpoints. Projects are nested developer workspaces." },
+                    { id: "p1_2", title: "Model Catalog & Router Selection", desc: "Evaluate 11,000+ models (GPT-4o, Claude 3.5, Llama 3, DeepSeek-R1) and route dynamically using latency/cost logic." },
+                    { id: "p1_3", title: "Economic Modeling (PAYG vs PTU)", desc: "Analyze Pay-As-You-Go vs Provisioned Throughput Units (PTU). Calculate breakeven at 150M-200M tokens/month." },
+                    { id: "p1_4", title: "Budget Controls & Security Rules", desc: "Configure Azure Cost Management alerts at 50%, 75%, and 90% thresholds and enforce hard tokens-per-minute limits." }
+                ],
+                codeTitle: "Python SDK: authenticating with Entra ID and AIProjectClient",
+                codeSnippet: `from azure.identity import DefaultAzureCredential
+from azure.ai.projects import AIProjectClient
+
+# Connect securely via Entra ID without hardcoding keys
+project_client = AIProjectClient.from_connection_string(
+    conn_str="<your-foundry-project-connection-string>",
+    credential=DefaultAzureCredential()
+)
+
+print(f"Connected to AI Foundry Workspace: {project_client.scope}")`
+            },
+            2: {
+                weeks: "Weeks 5-8",
+                title: "Generative Patterns, Retrieval, and Prompt Orchestration",
+                summary: "Learn how to ground models in proprietary data using RAG, evaluate fine-tuning trade-offs, and construct Directed Acyclic Graphs (DAGs) in Prompt Flow.",
+                topics: [
+                    { id: "p2_1", title: "RAG vs. Fine-Tuning Dichotomy", desc: "Use RAG for real-time dynamic facts; use LoRA/QDoRA fine-tuning for custom tone and JSON schema adherence." },
+                    { id: "p2_2", title: "Azure AI Search Hybrid Retrieval", desc: "Combine dense vector embedding similarity with traditional keyword BM25 search for optimal top-K retrieval." },
+                    { id: "p2_3", title: "Prompt Flow Visual DAG Orchestration", desc: "Link LLM nodes, Python parsing scripts, and evaluation nodes into debuggable visual DAG execution flows." },
+                    { id: "p2_4", title: "azure-ai-projects Vector Stores", desc: "Programmatically upload enterprise PDFs using FilePurpose.AGENTS and attach them to auto-indexed vector stores." }
+                ],
+                codeTitle: "Python SDK: Programmatic RAG Vector Store Attachment",
+                codeSnippet: `from azure.ai.projects.models import VectorStore
+
+# Create a managed vector store linked to uploaded HR PDFs
+vector_store = project_client.agents.create_vector_store_and_poll(
+    file_ids=["file_hr_policy_pdf_id"],
+    name="enterprise_hr_policies"
+)
+
+print(f"Vector Store Ready: {vector_store.id}")`
+            },
+            3: {
+                weeks: "Weeks 9-12",
+                title: "Advanced Agentic Workflows and Model Context Protocol (MCP)",
+                summary: "Shift from reactive chatbots to autonomous agents using function calling, Code Interpreter, and the revolutionary Model Context Protocol (MCP).",
+                topics: [
+                    { id: "p3_1", title: "Prompt Agents vs. Hosted Agents", desc: "Prompt Agents are fully managed declarative agents. Hosted Agents run custom containers (LangGraph / Semantic Kernel)." },
+                    { id: "p3_2", title: "Code Interpreter Sandboxed Execution", desc: "Enable agents to write Python code on the fly to analyze CSV data, run calculations, and render PNG charts." },
+                    { id: "p3_3", title: "Model Context Protocol (MCP) Integration", desc: "Connect agents to enterprise databases (SQL, Snowflake) via standardized MCP JSON-RPC host-server interfaces." },
+                    { id: "p3_4", title: "Multi-Agent Conversation Routing", desc: "Build intent-classifier router agents that delegate sub-tasks to specialized domain RAG or SQL agents." }
+                ],
+                codeTitle: "Python SDK: Attaching Model Context Protocol (MCP) Tool",
+                codeSnippet: `from azure.ai.projects.models import MCPTool
+
+# Attach an external MCP SQL Server to an AI Agent
+mcp_tool = MCPTool(server_label="sql_inventory_mcp", server_url="https://mcp-sql.azurecontainerapps.io/mcp")
+
+agent = project_client.agents.create_agent(
+    model="gpt-4o",
+    name="retail_inventory_agent",
+    instructions="Use MCP tool to discover SQL schemas and query stock levels.",
+    tools=mcp_tool.definitions
+)`
+            },
+            4: {
+                weeks: "Weeks 13-16",
+                title: "Observability, Evaluation, and Trustworthy AI",
+                summary: "Quantify non-deterministic LLM quality using AI judges, execute automated red-teaming attacks with PyRIT, and enforce Content Safety guardrails.",
+                topics: [
+                    { id: "p4_1", title: "Quantitative Quality Metrics", desc: "Measure Groundedness, Relevance, Coherence, and Tool Call Accuracy on a 1-5 scale using azure-ai-evaluation." },
+                    { id: "p4_2", title: "Automated Red Teaming with PyRIT", desc: "Simulate prompt injection and jailbreak attacks to test defenses and generate Attack Success Rate (ASR) reports." },
+                    { id: "p4_3", title: "OpenTelemetry Production Tracing", desc: "Trace token consumption, latency, and step duration across multi-agent loops via Azure Application Insights." },
+                    { id: "p4_4", title: "Prompt Shields & Content Safety", desc: "Filter incoming jailbreaks and outgoing hate speech/PII using real-time Azure AI Content Safety firewalls." }
+                ],
+                codeTitle: "Python SDK: Programmatic Groundedness Evaluation",
+                codeSnippet: `from azure.ai.evaluation import GroundednessEvaluator
+
+# Initialize LLM judge for evaluating RAG response against context
+groundedness_eval = GroundednessEvaluator(model_config=project_client.as_dict())
+
+result = groundedness_eval(
+    query="What is the employee remote work policy?",
+    response="Employees can work remotely up to 2 days a week.",
+    context="Company policy state: 'Full-time staff may work remotely 2 days per week.'"
+)
+
+print(f"Groundedness Score: {result['groundedness']} / 5.0")`
+            },
+            5: {
+                weeks: "Weeks 17-20",
+                title: "Production Deployment and Enterprise Scalability",
+                summary: "Host agent microservices at scale using Azure Container Apps, secure traffic with APIM GenAI Gateway, and implement automated validation pipelines.",
+                topics: [
+                    { id: "p5_1", title: "Containerization Strategies", desc: "Deploy custom agent microservices to Azure Container Apps with Dynamic Sessions for isolated execution." },
+                    { id: "p5_2", title: "Azure APIM GenAI Gateway", desc: "Implement semantic caching to reduce token spend, rate limit endpoints, and handle multi-region load balancing." },
+                    { id: "p5_3", title: "Agent Acceptance Gateway Framework", desc: "Automate pre-flight probe validation scripts to confirm Private Endpoints and Cosmos DB RBAC before launch." },
+                    { id: "p5_4", title: "Continuous CI/CD AI Governance", desc: "Embed red-teaming and groundedness evaluation checks directly into GitHub Actions or Azure DevOps pipelines." }
+                ],
+                codeTitle: "Deployment: APIM Policy for GenAI Rate Limiting & Caching",
+                codeSnippet: `<policies>
+    <inbound>
+        <azure-openai-token-limit tokens-per-minute="100000" counter-key="@(context.Subscription.Id)" />
+        <azure-openai-semantic-cache-lookup score-threshold="0.9" />
+    </inbound>
+</policies>`
+            }
+        };
+
+        // Capstone Blueprint Step Data
+        const capstoneSteps = {
+            1: {
+                title: "Step 1: Infrastructure Initialization & Governance",
+                desc: "Provision an Azure AI Foundry Hub with Private Endpoints enabled. Create a child Project workspace and grant developer identities the 'Azure AI Developer' RBAC role.",
+                components: ["Foundry Hub & Project", "Azure Key Vault", "Private Endpoints", "Entra ID RBAC"],
+                code: "az ai project create --resource-group rg-ai-foundry --name proj-iera --hub-name hub-enterprise"
+            },
+            2: {
+                title: "Step 2: Knowledge Grounding (RAG Setup)",
+                desc: "Upload corporate HR policy PDFs to Azure Blob Storage. Configure Azure AI Search with hybrid retrieval (vector similarity + keyword BM25) and attach the vector store to the project client.",
+                components: ["Azure Blob Storage", "Azure AI Search", "Vector Store SDK", "Text-Embedding-3-Large"],
+                code: "vector_store = project_client.agents.create_vector_store(name='hr_policies')"
+            },
+            3: {
+                title: "Step 3: Tool Integration via MCP Server",
+                desc: "Deploy a lightweight Azure SQL Database with inventory tables. Wrap the SQL database in an open-standard MCP Server container deployed to Azure Container Apps.",
+                components: ["Azure SQL DB", "Container Apps (MCP)", "MCPTool SDK", "Schema Discovery"],
+                code: "mcp_tool = MCPTool(server_url='https://mcp-sql.azurecontainerapps.io/mcp')"
+            },
+            4: {
+                title: "Step 4: Multi-Agent Orchestration & Routing",
+                desc: "Construct a primary router agent powered by GPT-4o-mini. The router evaluates the user prompt and delegates HR policy queries to the RAG Agent and stock queries to the MCP SQL Agent.",
+                components: ["GPT-4o-mini Router", "GPT-4o RAG Agent", "MCP Inventory Agent", "Thread State"],
+                code: "router_res = router.run('Where is SKU-8472 stored and what is the return policy?')"
+            },
+            5: {
+                title: "Step 5: Automated Red Teaming & Evaluation",
+                desc: "Run a benchmark dataset of 50 retail queries through Groundedness and Relevance evaluators. Execute PyRIT red-teaming scripts to attempt prompt injections against the SQL connection.",
+                components: ["PyRIT Red Teaming", "Groundedness Evaluator", "Attack Success Rate", "Content Safety"],
+                code: "eval_results = evaluate(target=iera_agent, metrics=[GroundednessEvaluator()])"
+            },
+            6: {
+                title: "Step 6: Production APIM Gateway & Observability",
+                desc: "Expose the agent endpoint via Azure API Management (APIM) with token rate-limiting and semantic caching. Enable OpenTelemetry tracing into Application Insights.",
+                components: ["APIM GenAI Gateway", "Semantic Cache", "App Insights Tracing", "Scale-to-Zero ACA"],
+                code: "az apim api create --service-name apim-ai-foundry --api-id iera-agent-api"
+            }
+        };
+
+        // State variables
+        let completedTopics = new Set();
+        let costChart = null;
+        let evalChart = null;
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', () => {
+            selectPhase(1);
+            initCostChart();
+            initEvalChart();
+            updateDecisionMatrix();
+            setCapstoneStep(1);
+            updateProgress();
+        });
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            const tabs = ['roadmap', 'simulators', 'capstone', 'certs'];
+            tabs.forEach(t => {
+                const view = document.getElementById(`view-${t}`);
+                const btn = document.getElementById(`tab-btn-${t}`);
+                if (t === tabId) {
+                    view.classList.remove('hidden');
+                    btn.classList.add('bg-blue-600', 'text-white');
+                    btn.classList.remove('text-slate-300', 'hover:text-white', 'hover:bg-slate-800');
+                } else {
+                    view.classList.add('hidden');
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('text-slate-300', 'hover:text-white', 'hover:bg-slate-800');
+                }
+            });
+        }
+
+        // Render Phase Content in Roadmap Explorer
+        function selectPhase(phaseNum) {
+            // Update Tab Highlight
+            for (let i = 1; i <= 5; i++) {
+                const btn = document.getElementById(`phase-btn-${i}`);
+                if (i === phaseNum) {
+                    btn.className = "phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-blue-600 ring-2 ring-blue-500/20 shadow-sm";
+                } else {
+                    btn.className = "phase-tab-btn p-4 rounded-xl border text-left transition bg-white border-slate-200 hover:border-slate-300 shadow-sm";
+                }
+            }
+
+            const data = phaseData[phaseNum];
+            const container = document.getElementById('phase-content-container');
+
+            let topicsHTML = data.topics.map(t => {
+                const isChecked = completedTopics.has(t.id) ? 'checked' : '';
+                return `
+                    <div class="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-slate-50 transition flex items-start space-x-3">
+                        <input type="checkbox" id="${t.id}" ${isChecked} onchange="toggleTopic('${t.id}')" class="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer">
+                        <div class="flex-1">
+                            <label for="${t.id}" class="font-bold text-slate-900 text-sm cursor-pointer">${t.title}</label>
+                            <p class="text-xs text-slate-600 mt-1 leading-relaxed">${t.desc}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">${data.weeks}</span>
+                        <h3 class="text-xl font-extrabold text-slate-900 mt-0.5">${data.title}</h3>
+                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">${data.summary}</p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="font-bold text-slate-900 text-sm mb-3">Key Technical Topics & Checkpoints:</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            ${topicsHTML}
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-4">
+                        <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center space-x-2">
+                            <span>💻</span>
+                            <span>${data.codeTitle}</span>
+                        </h4>
+                        <pre class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs overflow-x-auto font-mono leading-relaxed">${escapeHtml(data.codeSnippet)}</pre>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Toggle topic completion
+        function toggleTopic(topicId) {
+            if (completedTopics.has(topicId)) {
+                completedTopics.delete(topicId);
+            } else {
+                completedTopics.add(topicId);
+            }
+            updateProgress();
+        }
+
+        // Update Progress Bar
+        function updateProgress() {
+            const total = 20;
+            const current = completedTopics.size;
+            const percent = (current / total) * 100;
+
+            document.getElementById('overall-progress-bar').style.width = `${percent}%`;
+            document.getElementById('progress-text-count').innerText = `${current} / ${total} Topics Completed (${Math.round(percent)}%)`;
+        }
+
+        // Initialize Cost Chart
+        function initCostChart() {
+            const ctx = document.getElementById('costChart').getContext('2d');
+            costChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['20M', '50M', '100M', '150M', '200M', '250M', '300M'],
+                    datasets: [
+                        {
+                            label: 'Pay-As-You-Go (PAYG)',
+                            data: [150, 375, 750, 1125, 1500, 1875, 2250],
+                            borderColor: '#2563eb',
+                            backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                            fill: true,
+                            tension: 0.2
+                        },
+                        {
+                            label: 'Provisioned Throughput Units (PTU Fixed)',
+                            data: [1200, 1200, 1200, 1200, 1200, 1200, 1200],
+                            borderColor: '#0d9488',
+                            borderDash: [5, 5],
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Monthly Tokens Consumed', font: { size: 10 } } },
+                        y: { title: { display: true, text: 'Estimated Monthly Spend ($)', font: { size: 10 } }, beginAtZero: true }
+                    }
+                }
+            });
+            updateCostChart();
+        }
+
+        // Dynamic Cost Chart Update
+        function updateCostChart() {
+            const tokens = parseInt(document.getElementById('slider-tokens').value);
+            const rate = parseFloat(document.getElementById('slider-rate').value);
+
+            document.getElementById('slider-tokens-val').innerText = `${tokens}M Tokens`;
+            document.getElementById('slider-rate-val').innerText = `$${rate.toFixed(2)} / M`;
+
+            const paygSpend = tokens * rate;
+            const ptuSpend = 1200; // Fixed baseline benchmark for single unit
+
+            const insightBox = document.getElementById('cost-insight-box');
+            if (paygSpend < ptuSpend) {
+                insightBox.innerHTML = `
+                    <p class="font-bold text-slate-900">Current Winner: <span class="text-blue-600">Pay-As-You-Go (PAYG)</span></p>
+                    <p class="mt-0.5">At ${tokens}M tokens/month ($${paygSpend.toLocaleString()} estimated spend), PAYG is cheaper than committing to PTU ($${ptuSpend.toLocaleString()}/mo). Keep PAYG for variable or dev environments.</p>
+                `;
+            } else {
+                insightBox.innerHTML = `
+                    <p class="font-bold text-slate-900">Current Winner: <span class="text-teal-600">Provisioned Throughput Units (PTU)</span></p>
+                    <p class="mt-0.5">At ${tokens}M tokens/month, PAYG costs $${paygSpend.toLocaleString()}, whereas PTU costs ~$${ptuSpend.toLocaleString()}. Switching to PTU will save ~<strong>$${(paygSpend - ptuSpend).toLocaleString()} / month</strong> and guarantee reserved latency.</p>
+                `;
+            }
+
+            if (costChart) {
+                const labels = ['20M', '50M', '100M', '150M', '200M', '250M', '300M'];
+                const tokenVals = [20, 50, 100, 150, 200, 250, 300];
+                costChart.data.datasets[0].data = tokenVals.map(v => v * rate);
+                costChart.update();
+            }
+        }
+
+        // Update Strategy Matrix
+        function updateDecisionMatrix() {
+            const scenario = document.getElementById('matrix-scenario-select').value;
+            const card = document.getElementById('decision-result-card');
+
+            if (scenario === 'realtime') {
+                card.innerHTML = `
+                    <div class="flex items-center space-x-2 text-blue-700 font-bold text-sm">
+                        <span>🔍 Recommended: Managed RAG (Azure AI Search + GPT-4o)</span>
+                    </div>
+                    <p class="text-xs text-slate-700">
+                        <strong>Why:</strong> Dynamic enterprise facts (PDFs, HR manuals, pricing) change frequently. RAG retrieves fresh context at query time without expensive retraining.
+                    </p>
+                    <div class="text-xs bg-white p-2.5 rounded-lg border border-indigo-100 text-slate-600">
+                        <strong>SDK Components:</strong> <code>azure-ai-projects</code>, <code>AIProjectClient.agents</code>, Azure AI Search Hybrid Indexing.
+                    </div>
+                `;
+            } else if (scenario === 'style') {
+                card.innerHTML = `
+                    <div class="flex items-center space-x-2 text-indigo-700 font-bold text-sm">
+                        <span>⚙️ Recommended: Parameter-Efficient Fine-Tuning (LoRA / QLoRA)</span>
+                    </div>
+                    <p class="text-xs text-slate-700">
+                        <strong>Why:</strong> Fine-tuning alters neural weights to enforce complex JSON output schemas, brand voice, or domain vernacular while shrinking system prompt length.
+                    </p>
+                    <div class="text-xs bg-white p-2.5 rounded-lg border border-indigo-100 text-slate-600">
+                        <strong>SDK Components:</strong> Managed Fine-Tuning Pipelines in Azure AI Foundry, Direct Preference Optimization (DPO).
+                    </div>
+                `;
+            } else if (scenario === 'copilot') {
+                card.innerHTML = `
+                    <div class="flex items-center space-x-2 text-teal-700 font-bold text-sm">
+                        <span>🔀 Recommended: Hybrid Architecture (RAG + Fine-Tuned SLM)</span>
+                    </div>
+                    <p class="text-xs text-slate-700">
+                        <strong>Why:</strong> Combines real-time search lookup with a fine-tuned lightweight model to keep prompt tokens low while maintaining flawless brand voice.
+                    </p>
+                    <div class="text-xs bg-white p-2.5 rounded-lg border border-indigo-100 text-slate-600">
+                        <strong>SDK Components:</strong> Azure AI Search + Fine-tuned Phi-4 / GPT-4o-mini deployment.
+                    </div>
+                `;
+            } else if (scenario === 'slm') {
+                card.innerHTML = `
+                    <div class="flex items-center space-x-2 text-emerald-700 font-bold text-sm">
+                        <span>⚡ Recommended: Small Language Models (Microsoft Phi-3 / Phi-4)</span>
+                    </div>
+                    <p class="text-xs text-slate-700">
+                        <strong>Why:</strong> Simple classification or extraction tasks do not require massive frontier models like GPT-4o. Phi-4 delivers ultra-fast inference at <10% of the cost.
+                    </p>
+                    <div class="text-xs bg-white p-2.5 rounded-lg border border-indigo-100 text-slate-600">
+                        <strong>SDK Components:</strong> Managed Compute deployment for Phi-4 open-weight model in Model Catalog.
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize Radar Evaluation Chart
+        function initEvalChart() {
+            const ctx = document.getElementById('evalRadarChart').getContext('2d');
+            evalChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Groundedness', 'Relevance', 'Coherence', 'Fluency', 'Tool Accuracy'],
+                    datasets: [{
+                        label: 'Current Quality Score',
+                        data: [4.8, 4.5, 4.7, 4.9, 4.6],
+                        backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                        borderColor: '#2563eb',
+                        pointBackgroundColor: '#2563eb'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 5,
+                            ticks: { stepSize: 1 }
+                        }
+                    }
+                }
+            });
+        }
+
+        function setEvalPreset(preset) {
+            if (!evalChart) return;
+            if (preset === 'rag') {
+                evalChart.data.datasets[0].data = [4.9, 4.6, 4.5, 4.8, 3.2];
+                evalChart.data.datasets[0].label = 'RAG Quality Target';
+            } else if (preset === 'agent') {
+                evalChart.data.datasets[0].data = [4.3, 4.7, 4.6, 4.7, 4.9];
+                evalChart.data.datasets[0].label = 'Agentic Quality Target';
+            }
+            evalChart.update();
+        }
+
+        // Capstone Stepper
+        function setCapstoneStep(stepNum) {
+            for (let i = 1; i <= 6; i++) {
+                const btn = document.getElementById(`cstep-btn-${i}`);
+                if (i === stepNum) {
+                    btn.className = "capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white";
+                } else {
+                    btn.className = "capstone-step-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-800 text-slate-400 hover:text-white";
+                }
+            }
+
+            const step = capstoneSteps[stepNum];
+            const details = document.getElementById('capstone-step-details');
+
+            const comps = step.components.map(c => `<span class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-md border border-slate-700 text-xs">${c}</span>`).join(' ');
+
+            details.innerHTML = `
+                <div class="lg:col-span-2 space-y-4">
+                    <h4 class="text-lg font-bold text-white">${step.title}</h4>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">${step.desc}</p>
+                    <div>
+                        <p class="text-xs font-semibold text-slate-400 mb-2">Key Architectural Building Blocks:</p>
+                        <div class="flex flex-wrap gap-2">${comps}</div>
+                    </div>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+                    <div>
+                        <p class="text-xs font-bold text-blue-400 mb-2">CLI / SDK Execution Snippet:</p>
+                        <pre class="text-xs text-teal-300 font-mono overflow-x-auto whitespace-pre-wrap">${escapeHtml(step.code)}</pre>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 text-xs text-slate-500">
+                        Step ${stepNum} of 6 in Capstone Implementation Flow
+                    </div>
+                </div>
+            `;
+        }
+
+        // Quiz Logic
+        function checkQuiz() {
+            const q1 = document.querySelector('input[name="q1"]:checked')?.value;
+            const q2 = document.querySelector('input[name="q2"]:checked')?.value;
+            const q3 = document.querySelector('input[name="q3"]:checked')?.value;
+
+            let score = 0;
+            if (q1 === 'b') score++;
+            if (q2 === 'b') score++;
+            if (q3 === 'a') score++;
+
+            const badge = document.getElementById('quiz-score-badge');
+            const feedback = document.getElementById('quiz-feedback');
+
+            badge.innerText = `Score: ${score}/3`;
+            feedback.classList.remove('hidden');
+
+            if (score === 3) {
+                badge.className = "text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full";
+                feedback.className = "mt-4 p-3 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-900 border border-emerald-200";
+                feedback.innerText = "🎉 Excellent work! You have mastered the key architectural concepts of Azure AI Foundry.";
+            } else {
+                badge.className = "text-xs bg-amber-100 text-amber-800 font-bold px-3 py-1 rounded-full";
+                feedback.className = "mt-4 p-3 rounded-lg text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200";
+                feedback.innerText = "Review the Roadmap and Simulators sections to refine your understanding of Azure AI Foundry governance and MCP protocols.";
+            }
+        }
+
+        // Helper function to escape HTML string
+        function escapeHtml(str) {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
