@@ -2,6 +2,10 @@
 
 ## 2026-10-01
 
+* **Learning path**: Added a learner-facing course map and a full Week 1 lesson covering current Foundry resource/project boundaries, control plane versus data plane, identity, and RBAC. Later weeks are planned, not yet written. Checked the primary Microsoft Learn sources on 2026-10-01.
+
+## 2026-10-01
+
 * **Ingest**: Processed the Phase 1 lesson plan, source register, and captured Azure AI Foundry announcement from `sources/inbox/`. Extended the learning roadmap with the four-week Phase 1 study plan and evidence labels; added the captured announcement as historical, time-sensitive provenance to the platform synthesis. Raw inbox sources were preserved. Claims involving previews, early tests, pricing, quotas, availability, and security remain unverified.
 
 ## 2026-10-01

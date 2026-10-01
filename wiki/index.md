@@ -8,6 +8,10 @@ okf_version: "0.2"
 * [Operating playbook](operations.md) - Ingest and maintenance workflows.
 * [Open Knowledge Format](okf.md) - Local OKF v0.2 contract.
 
+# Learning
+
+* [Course map](course-map.md) - Start here; Week 1 lesson is ready.
+
 # Topics
 
 * [Azure AI Foundry learning roadmap](learning-roadmap.md) - Proposed study sequence.
