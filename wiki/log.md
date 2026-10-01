@@ -2,6 +2,10 @@
 
 ## 2026-10-01
 
+* **Ingest**: Processed the Phase 1 lesson plan, source register, and captured Azure AI Foundry announcement from `sources/inbox/`. Extended the learning roadmap with the four-week Phase 1 study plan and evidence labels; added the captured announcement as historical, time-sensitive provenance to the platform synthesis. Raw inbox sources were preserved. Claims involving previews, early tests, pricing, quotas, availability, and security remain unverified.
+
+## 2026-10-01
+
 * **Ingest**: Reviewed all 48 roadmap URLs. Added 48 concise source notes with original URLs, retrieval status and paraphrased observations where readable. Created three synthesis pages for platform/cost, RAG/agents/MCP, and evaluation/security/learning. Updated MOC and catalog. Inaccessible and conflicting sources are flagged; claims remain unverified.
 
 ## 2026-10-01

@@ -7,7 +7,7 @@ status: draft
 stale_after: 2026-12-31T23:59:59Z
 generated:
   by: codex/gpt-6
-  at: 2026-10-01T18:07:00Z
+  at: 2026-10-01T18:59:49Z
 sources:
   - id: roadmap-docx
     resource: ../sources/azure-ai-foundry/Azure AI Foundry Learning Roadmap.docx
@@ -18,6 +18,12 @@ sources:
   - id: roadmap-references
     resource: ../sources/azure-ai-foundry/roadmap-references.md
     title: Roadmap citation register
+  - id: phase-1-lesson-plan
+    resource: ../sources/inbox/azure-foundry-phase-1-lesson-plan.md
+    title: Microsoft Foundry Phase 1 lesson plan
+  - id: phase-1-source-register
+    resource: ../sources/inbox/azure-foundry-phase-1-source-register.md
+    title: Microsoft Foundry Phase 1 source register
 ---
 
 # Purpose and scope
@@ -31,6 +37,10 @@ This page captures the learning sequence and project proposal in the DOCX and it
 Study the Hub/Project hierarchy, governance and access control, network isolation, model selection, deployment types, and cost controls. Compare Pay-As-You-Go (PAYG), Provisioned Throughput Units (PTUs), and managed compute; account for token limits, budget alerts, and supporting services.
 
 The sources give specific claims, including model-catalog size, a 50–80% inference-cost share, and a 150–200 million tokens/month PTU break-even range. Treat these figures as unverified and time-sensitive. Confirm current model availability, pricing, network behavior, and access roles before use. The DOCX points chiefly to bibliography entries 1–14.
+
+The companion [Phase 1 lesson plan](../sources/inbox/azure-foundry-phase-1-lesson-plan.md) narrows this phase to four weeks and five deliverables: a control-plane/data-plane and resource/project diagram, a least-privilege identity and RBAC matrix, a network decision record, a model and deployment comparison, and a low/expected/high cost estimate with guardrails. It explicitly separates sourced facts, calculations, design choices, and open questions. Its [source register](../sources/inbox/azure-foundry-phase-1-source-register.md) prioritizes current Microsoft Learn material for platform boundaries, networking, model deployment, provisioned throughput, budgets, and alerts.
+
+The lesson plan is a study guide, not verified architecture guidance. Its network, role, model, region, pricing, quota, and product-availability claims require validation in the target subscription and region. In particular, budgets and cost alerts are described as notification and accountability controls, not automatic spending cutoffs; preventative controls must be designed separately.
 
 ## Phase 2: generative patterns and orchestration (weeks 5–8)
 
