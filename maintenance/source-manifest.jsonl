@@ -1,5 +1,53 @@
-{"path": "sources/README.md", "sha256": "48fde3a5dbf33bb23d590814041e4ed89bbd9a932cc4475055120614a7981e17", "covered_by": [], "kind": "guidance"}
-{"path": "sources/azure-ai-foundry/Azure AI Foundry Learning Roadmap.docx", "sha256": "cc01d0c190532a1696769b88668804fe24d826397eb24fd3596b9a5c4d21daac", "covered_by": ["wiki/learning-roadmap.md"], "kind": "source"}
-{"path": "sources/azure-ai-foundry/azure_ai_foundry_roadmap.html", "sha256": "d711b876a0f141b8e0bf5beedd8a4d2db5b5a4a34b37e1383dfaa7d13f889569", "covered_by": ["wiki/learning-roadmap.md"], "kind": "source"}
-{"path": "sources/azure-ai-foundry/roadmap-references.md", "sha256": "cb3fc5e5dff6ca86f5fcd0eaaade5a249a37bc8958ba3daf4c471a0451d0a7ca", "covered_by": ["wiki/learning-roadmap.md"], "kind": "source"}
-{"path": "sources/inbox/README.md", "sha256": "e236df8339fae8589cc5c4635bc5d822d4c4572a304144dcecbb32c11c4dd750", "covered_by": [], "kind": "guidance"}
+{"path":"sources/README.md","sha256":"48fde3a5dbf33bb23d590814041e4ed89bbd9a932cc4475055120614a7981e17","covered_by":[],"kind":"guidance"}
+{"path":"sources/azure-ai-foundry/Azure AI Foundry Learning Roadmap.docx","sha256":"cc01d0c190532a1696769b88668804fe24d826397eb24fd3596b9a5c4d21daac","covered_by":["wiki/learning-roadmap.md"],"kind":"source"}
+{"path":"sources/azure-ai-foundry/azure_ai_foundry_roadmap.html","sha256":"d711b876a0f141b8e0bf5beedd8a4d2db5b5a4a34b37e1383dfaa7d13f889569","covered_by":["wiki/learning-roadmap.md"],"kind":"source"}
+{"path":"sources/azure-ai-foundry/roadmap-references.md","sha256":"cb3fc5e5dff6ca86f5fcd0eaaade5a249a37bc8958ba3daf4c471a0451d0a7ca","covered_by":["wiki/learning-roadmap.md"],"kind":"source"}
+{"path":"sources/inbox/README.md","sha256":"e236df8339fae8589cc5c4635bc5d822d4c4572a304144dcecbb32c11c4dd750","covered_by":[],"kind":"guidance"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/platform-and-costs.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/rag-agents-and-mcp.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}
+{"covered_by":["wiki/evaluation-security-and-learning.md"],"kind":"source"}

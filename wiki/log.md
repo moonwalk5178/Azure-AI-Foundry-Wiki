@@ -2,6 +2,10 @@
 
 ## 2026-10-01
 
+* **Ingest**: Reviewed all 48 roadmap URLs. Added 48 concise source notes with original URLs, retrieval status and paraphrased observations where readable. Created three synthesis pages for platform/cost, RAG/agents/MCP, and evaluation/security/learning. Updated MOC and catalog. Inaccessible and conflicting sources are flagged; claims remain unverified.
+
+## 2026-10-01
+
 * **Ingest**: Processed the DOCX learning roadmap and interactive HTML companion into a five-phase learning sequence and capstone outline. Technical statements are recorded as roadmap claims, not verified guidance; the 48 cited works were not checked. Verified DOCX bytes match the prior manifest hash after the committed path capitalization change. Added the HTML source and refreshed source hashes and coverage.
 
 * **Sources**: Added the original Azure AI Foundry learning roadmap and its 48-entry reference register to sources; no derived wiki concepts added.
